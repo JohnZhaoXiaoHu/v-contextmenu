@@ -19,6 +19,7 @@ export default {
   props: {
     title: String,
     disabled: Boolean,
+    placement: String
   },
 
   data() {
@@ -56,23 +57,41 @@ export default {
       this.$emit('mouseenter', this, event)
 
       this.$nextTick(() => {
+
         const submenuWidth = this.$refs.submenu.clientWidth
         const submenuHeight = this.$refs.submenu.clientHeight
         const submenuPlacement = []
 
-        if (targetDimension.right + submenuWidth >= window.innerWidth) {
-          submenuPlacement.push('left')
+        if (this.placement) {
+          switch (this.placement) {
+            case 'lt':
+              this.submenuPlacement = ['left', 'bottom']
+              break
+            case 'lb':
+              this.submenuPlacement = ['left', 'top']
+              break
+            case 'rt':
+              this.submenuPlacement = ['right', 'bottom']
+              break
+            case 'rb':
+              this.submenuPlacement = ['right', 'top']
+              break
+          }
         } else {
-          submenuPlacement.push('right')
-        }
+          if (targetDimension.right + submenuWidth >= window.innerWidth) {
+            submenuPlacement.push('left')
+          } else {
+            submenuPlacement.push('right')
+          }
 
-        if (targetDimension.bottom + submenuHeight >= window.innerHeight) {
-          submenuPlacement.push('bottom')
-        } else {
-          submenuPlacement.push('top')
-        }
+          if (targetDimension.bottom + submenuHeight >= window.innerHeight) {
+            submenuPlacement.push('bottom')
+          } else {
+            submenuPlacement.push('top')
+          }
 
-        this.submenuPlacement = submenuPlacement
+          this.submenuPlacement = submenuPlacement
+        }
       })
     },
     handleMouseleave(event) {

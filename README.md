@@ -18,7 +18,7 @@
 
 可通过 [unpkg.com/v-contextmenu](https://unpkg.com/v-contextmenu/) 获取最新版本的资源，在页面中引入相应 js 和 css 文件即可。
 
-``` html
+```html
 <!-- 引入 Vue -->
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 
@@ -26,7 +26,7 @@
 <script src="https://unpkg.com/v-contextmenu/dist/index.js"></script>
 
 <!-- 引入 VContextmenu 组件样式 -->
-<link rel="stylesheet" href="https://unpkg.com/v-contextmenu/dist/index.css">
+<link rel="stylesheet" href="https://unpkg.com/v-contextmenu/dist/index.css" />
 ```
 
 > 建议使用 NPM 安装
@@ -48,10 +48,10 @@ $ npm i -S v-contextmenu # yarn add v-contextmenu
 一个简单的例子
 
 ```javascript
-import contentmenu from 'v-contextmenu'
-import 'v-contextmenu/dist/index.css'
+import contentmenu from "v-contextmenu";
+import "v-contextmenu/dist/index.css";
 
-Vue.use(contentmenu)
+Vue.use(contentmenu);
 ```
 
 ```html
@@ -91,6 +91,7 @@ Vue.use(contentmenu)
 ```bash
 $ npm install
 $ npm run dev
+# http://localhost:4869/
 ```
 
 ## 构建
@@ -105,15 +106,12 @@ $ npm run build # build:package & build:example
 
 详见 [releases][url-releases]
 
-
 [badge-npm-version]: https://img.shields.io/npm/v/v-contextmenu.svg
 [badge-node-version]: https://img.shields.io/node/v/v-contextmenu.svg
 [badge-npm-download]: https://img.shields.io/npm/dt/v-contextmenu.svg
 [badge-license]: https://img.shields.io/github/license/heynext/v-contextmenu.svg
 [badge-dependencies]: https://img.shields.io/david/dev/heynext/v-contextmenu.svg
-
 [url-npm]: https://npmjs.org/package/v-contextmenu
 [url-dependencies]: https://david-dm.org/vkbansal/v-contextmenu
 [url-releases]: https://github.com/heynext/v-contextmenu/releases
-
 [image-npm]: https://nodei.co/npm/v-contextmenu.png

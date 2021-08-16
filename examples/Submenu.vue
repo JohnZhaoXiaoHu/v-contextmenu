@@ -11,14 +11,14 @@
 
         <v-contextmenu-item divider></v-contextmenu-item>
 
-        <v-contextmenu-submenu title="子菜单">
+        <v-contextmenu-submenu title="子菜单1" :placement="'lt'">
           <v-contextmenu-item @click="handleClick">菜单5</v-contextmenu-item>
         </v-contextmenu-submenu>
 
         <v-contextmenu-item @click="handleClick">菜单4</v-contextmenu-item>
 
         <v-contextmenu-item :auto-hide="false">不自动关闭</v-contextmenu-item>
-        <v-contextmenu-item :is-active="false" :auto-hide="false">
+        <v-contextmenu-item @mouseleave="onMouseleave" :is-active="false" :auto-hide="false">
           <el-button @click="getPosition">获取位置</el-button>
           <el-form
             :model="dynamicValidateForm"
@@ -62,6 +62,11 @@
       <v-contextmenu-item>菜单1</v-contextmenu-item>
       <v-contextmenu-item divider></v-contextmenu-item>
       <v-contextmenu-item>菜单2</v-contextmenu-item>
+      <v-contextmenu-item>菜单3</v-contextmenu-item>
+      <v-contextmenu-item>菜单3</v-contextmenu-item>
+      <v-contextmenu-item>菜单3</v-contextmenu-item>
+      <v-contextmenu-item>菜单3</v-contextmenu-item>
+      <v-contextmenu-item>菜单3</v-contextmenu-item>
       <v-contextmenu-item>菜单3</v-contextmenu-item>
     </v-contextmenu>
 
@@ -122,11 +127,20 @@ export default {
     getPosition() {
       const targetDimensions = this.$refs.submenu.$refs.submenu.getBoundingClientRect()
       const postition = {
-        top: Math.random() * targetDimensions.height + targetDimensions.top,
-        left: Math.random() * targetDimensions.width + targetDimensions.left,
+        top: targetDimensions.top + 22,
+        left: targetDimensions.right,
       }
-      this.$refs.contextmenuss.show(postition)
-      // console.log(this.$refs.submenu.$refs.submenu.getBoundingClientRect())
+      this.$refs.contextmenuss.show(postition, () => {
+        setTimeout(() => {
+          this.$refs.contextmenuss.$el.style.display = "inline-block"
+        }, 50)
+      })
+    },
+    onMouseleave() {
+      if (this.$refs.contextmenuss) {
+        this.$refs.contextmenuss.hide()
+        this.$refs.contextmenuss.$el.style.display = "none"
+      }
     }
   },
 }
