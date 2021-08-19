@@ -2,8 +2,8 @@
   <li :class="classname" @mouseenter="handleMouseenter" @mouseleave="handleMouseleave">
     <span class="v-contextmenu-submenu__title">
       <slot name="title">{{ title }}</slot>
-
-      <span class="v-contextmenu-iconfont v-contextmenu-submenu__icon" />
+      <slot name="define" />
+      <span v-show="!$slots['define']" class="v-contextmenu-iconfont v-contextmenu-submenu__icon" />
     </span>
 
     <ul v-show="hover" ref="submenu" :class="submenuCls">
