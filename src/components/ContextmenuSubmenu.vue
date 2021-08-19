@@ -19,7 +19,12 @@ export default {
   props: {
     title: String,
     disabled: Boolean,
-    placement: String
+    placement: String,
+    // 鼠标覆盖是否显示背景色
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   data() {
@@ -33,7 +38,7 @@ export default {
       return {
         'v-contextmenu-item': true,
         'v-contextmenu-submenu': true,
-        'v-contextmenu-item--hover': this.hover,
+        'v-contextmenu-item--hover': this.hover && this.isActive,
         'v-contextmenu-item--disabled': this.disabled,
       }
     },
