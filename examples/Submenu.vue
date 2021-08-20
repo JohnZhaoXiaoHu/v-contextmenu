@@ -127,7 +127,7 @@ export default {
     getPosition() {
       const targetDimensions = this.$refs.submenu.$refs.submenu.getBoundingClientRect()
       const postition = {
-        top: targetDimensions.top + 22,
+        top: targetDimensions.top,
         left: targetDimensions.right,
       }
       this.$refs.contextmenuss.show(postition, () => {
